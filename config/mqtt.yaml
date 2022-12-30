@@ -1,0 +1,10 @@
+#ClienyID
+client_id: "CLIENT-NAME"
+
+brokers:
+  - "3.6.31.126:1883"
+username: anwar
+password: mqtt@#408
+ping_timeout: 2 #ping timeout in seconds
+max_reconnect_interval: 5 #max reconnect interval
+connect_timeout: 5 #max reconnect interval

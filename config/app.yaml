@@ -1,0 +1,13 @@
+#Application Http Port
+port: 8002
+
+#Application debug mode
+debug: true
+
+#Application Logging
+log: true
+
+log_dir: ""
+
+#Application timezone
+timezone: "Asia/Kolkata"
