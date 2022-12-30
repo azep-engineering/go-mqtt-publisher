@@ -1,5 +1,5 @@
 
-# AZEP MQTT Publisher - API Documentation
+# Go MQTT Publisher
 
 ## How it works
 
@@ -92,13 +92,16 @@ ___
     }
 }
 ```
+
 ---
 
 ## Verification Steps
 
 MQTTX provides a simple interface for publishing messages to MQTT topics and subscribing to receive messages from topics.
 
-####  To Install MQTTX Follow link below
+![ MQTTX ](MQTTX.png)
+
+### To Install MQTTX Follow link below
 
 https://mqttx.app/docs/downloading-and-installation
 
