@@ -1,6 +1,7 @@
+
 # AZEP MQTT Publisher - API Documentation
 
-## How it work
+## How it works
 
 ![A screenshot of my MQTT publisher](MQTT.png)
 
@@ -8,83 +9,56 @@ This is a simple MQTT client written in Go. It demonstrates the basic functional
 
 ## Prerequisites
 
-Before you begin, make sure you have the following dependencies installed:
+Before you begin, make sure you have the following dependencies are installed:
 
 - Go (version 1.18 or higher)
-- An MQTT broker (such as Mosquitto)
+- MQTT broker (such as Mosquitto)
+- MQTTX Client (Optional)
 
 ## Installing
 
-To install the MQTT client, clone the repository and build the binary:
+To install the `go-mqtt-publisher` client, clone the repository and build the binary:
 
-```git clone https://github.com/<username>/azep-mqtt-publisher.git
-cd azep-mqtt-publisher
-go build
+### Clone
+```
+git clone https://github.com/azep-engineering/go-mqtt-publisher.git
 ```
 
-- Copy code
+### Config Update
+- `cd go-mqtt-publisher`
+
+- `config/mqtt.yaml`
+	- Update broker IP under `brokers`
+```
+#ClienyID  
+client_id: “CLIENT-NAME”
+brokers:  
+- “XX.XX.XX.XX:1883" 
+ 
+username: ""
+password: "" 
+
+ping_timeout: 2 #ping timeout in seconds  
+max_reconnect_interval: 5 #max reconnect interval  
+connect_timeout: 5 #max reconnect interval
+```
+### Build
+- `go mod tidy`
+-  `go build`
+
 
 ## Usage
-
-To use the MQTT client, run the binary with and check in MQTTX or Postman:
-
----
-
-## Using MQTTX
-
-To test the MQTT client using MQTTX, you will need to have MQTTX installed on your machine.
-
-### To Install MQTTX Follow link below
-
-https://mqttx.app/docs/downloading-and-installation
-
-### After Install Follow
-
-- Open MQTTX and click on the "New Connection" button.
-Enter the URL of the MQTT broker you want to connect to in the "Server" field (e.g. tcp://localhost:1883).
-- Enter a name for the connection in the "Client ID" field (e.g. "mqtt-client-go").
-- Click on the "Connect" button to establish a connection to the MQTT broker.
-- Once connected, you can subscribe to the topic you specified in the MQTT client by clicking on the "Subscribe" button and entering the topic name in the "Topic" field.
-- To publish a message to the topic, click on the "Publish" button and enter the topic name and message in the appropriate fields.
-- The MQTT client should receive the message and print it to the console.
-
-```text
-Note: You may need to configure the MQTT client to use the same client ID as the one you entered in MQTTX in order for the client to receive the message. You can do this by adding a `clientid` flag to the command line arguments when running the MQTT client.
-```
-
-## Using Postman
+By calling below API, We can be able to publish messages to MQTT broker.
 
 ### API Overview
 
-| Environment | Base-URL |
+| Method| Endpoint|
 |---|---|
-|Local|  `localhost:8002/v1/publish` |
-
-### Endpoints
-
-#### MQTT Notification Service
-
-| Description | Endpoints | Method | StatusCode | Sign |
-|---|---|---|---|---|
-|Publish MQTT Notification| /v1/publish | POST | 200 |  [Sign](#MQTT)
+|POST|  `http://localhost:8002/v1/publish` |
 
 ___
 
-## API
-
-Endpoint : `/v1/publish`
-
-Method : `POST`
-
-StatusCode : `200`
-
----
-
-### `Request`
-
-#### MQTT Publish
-
-Request
+### Request
 
 ```json
 {
@@ -99,7 +73,7 @@ Request
 }
 ```
 
-Response
+### Response
 
 ```json
 {
@@ -118,3 +92,14 @@ Response
     }
 }
 ```
+---
+
+## Verification Steps
+
+MQTTX provides a simple interface for publishing messages to MQTT topics and subscribing to receive messages from topics.
+
+####  To Install MQTTX Follow link below
+
+https://mqttx.app/docs/downloading-and-installation
+
+---
