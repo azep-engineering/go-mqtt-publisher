@@ -1,0 +1,9 @@
+#Application Log level
+#available options ERROR (default), DEBUG, INFO, SUCCESS
+level: "INFO"
+
+remote_log: true
+local_log: true
+file_logging: false
+log_to_file: false
+log_path: "logs"
